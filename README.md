@@ -26,8 +26,8 @@ go build -o ninepro_go ./cmd/main.go
 
 Now you can run the binary:
 ```
-./ninepro_go  # On Unix/Linux/Mac
-ninepro_go.exe  # On Windows
+./ninepro_go    // On Unix/Linux/Mac
+ninepro_go.exe  // On Windows
 ```
 
 If you are deploying on Heroku you will need to create a `Procfile` and add the following:
