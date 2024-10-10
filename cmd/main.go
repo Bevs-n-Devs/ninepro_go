@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"ninepro_go/pkg/handler"
 
@@ -10,10 +11,17 @@ import (
 )
 
 func main() {
-	// Load environment variables from .env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file: %v", err)
+	// Check if the environment is production
+	if os.Getenv("ENV") != "production" {
+		// Load environment variables from .env in non-production environments
+		err := godotenv.Load()
+		if err != nil {
+			log.Printf("Error loading .env file: %v", err) // Use Printf instead of Fatalf to continue even if the .env file is missing
+		} else {
+			log.Println(".env file loaded successfully")
+		}
+	} else {
+		log.Println("Running in production mode, skipping .env file loading")
 	}
 
 	// Initialize Gin
@@ -30,6 +38,6 @@ func main() {
 	r.GET("/home", handler.Home)
 	r.POST("/contact", handler.Contact)
 
-	// Run the server
+	// Run the server on port 8080
 	r.Run(":8080")
 }
