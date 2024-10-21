@@ -53,14 +53,31 @@
         .centered-button:hover {
             background-color: rgba(255, 255, 255, 0.9);
         }
+
+        .centered-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px; /* Adjust the size of the image as needed */
+            height: auto;
+            cursor: pointer;
+        }
     </style>
+
+    <script>
+        // Automatically redirect after 2 seconds
+        setTimeout(function() {
+            window.location.href = "/home"; // Change this to the URL of the next page
+        }, 1575); // 2000 milliseconds = 2 seconds
+    </script>
 </head>
 <body>
 
     <img src="static/images/assets/images/stadium-pic.jpg" alt="Background Image">
 
     <!-- Centered Button -->
-    <button class="centered-button" onclick="location.href='/home'">NINE PRO<br>Click to Enter</button>
+    <img class="centered-image" src="static/images/assets/images/logo.jpg" alt="Enter NINE PRO">
 
 </body>
 </html>
